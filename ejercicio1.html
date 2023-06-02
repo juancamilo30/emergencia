@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            display: grid;
+            grid-template-columns: 250px 200px;
+        }
+
+        input,
+        button,
+        h2,
+        span {
+            margin: 0 5px;
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+
+        <input type="text" placeholder="ingrese un numero" id="input">
+        <button id="enviar">Calcular</button>
+
+        <h2>serie:</h2>
+        <span id="cant"></span>
+        <h2>numeros pares:</h2>
+        <span id="pares"></span>
+        <h2>numeros impares:</h2>
+        <span id="impar"></span>
+    </main>
+    <script>
+
+        let par = 0;
+        let impar = 0;
+        let num1 = 0;
+        let num2 = 1;
+        let suma=0;
+        let c=0;
+        document.getElementById("enviar").addEventListener("click", (e) => {
+            let dato = parseInt(document.getElementById("input").value);
+            //comprobar si es numero
+            console.log("el numero es :" + dato);
+            if (isNaN(dato)) {
+                alert("ingrese un numero o dato valido");
+                document.getElementById("input").value = "";
+            }
+            //si para ver si es numero amyor que cero o natural
+            if (dato >= 0) {
+                c++;
+                //for para hacer las sumas de las serie
+                for (let i = 0; i < dato; i++) {
+                    suma=num1+num2;
+                    num2=num1;
+                    num1=dato;
+                    console.log("suma: "+suma)
+                    if(suma%2==0){
+                        par++;
+                        document.getElementById("pares").innerText=par;
+                    }else{
+                        impar++;
+                        document.getElementById("impar").innerText=impar;
+                    }
+                    
+                }
+                document.getElementById("cant").innerText=suma;
+            }
+
+        });
+    </script>
+</body>
+
+</html>
